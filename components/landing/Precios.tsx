@@ -92,18 +92,19 @@ export default function Precios() {
 
 function PlanCard({ plan }: { plan: (typeof plans)[0] }) {
   return (
-    <div
-      className={`relative flex flex-col rounded-2xl p-7 gap-6 transition-all duration-300 ${
-        plan.highlight
-          ? "bg-[#0B4C4A] text-white shadow-2xl shadow-[#0B4C4A]/30 border-2 border-[#53B04B] scale-105 md:-mt-4 md:-mb-4 shimmer-overlay animate-float"
-          : "bg-white text-gray-700 border border-gray-200 hover:shadow-md hover:-translate-y-1"
-      }`}
-    >
+    <div className={`relative ${plan.highlight ? "pt-5 md:-mt-4 md:-mb-4 animate-float" : ""}`}>
       {plan.highlight && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#53B04B] text-white text-xs font-bold px-5 py-1.5 rounded-full shadow-md animate-glow-pulse-green">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 bg-[#53B04B] text-white text-xs font-bold px-5 py-1.5 rounded-full shadow-md animate-glow-pulse-green whitespace-nowrap">
           Más Popular
         </div>
       )}
+    <div
+      className={`relative flex flex-col rounded-2xl p-7 gap-6 transition-all duration-300 ${
+        plan.highlight
+          ? "bg-[#0B4C4A] text-white shadow-2xl shadow-[#0B4C4A]/30 border-2 border-[#53B04B] scale-105 shimmer-overlay"
+          : "bg-white text-gray-700 border border-gray-200 hover:shadow-md hover:-translate-y-1"
+      }`}
+    >
 
       <div className={`inline-flex items-center gap-1.5 text-xs font-semibold rounded-full px-3 py-1 w-fit ${
         plan.highlight ? "bg-[#53B04B]/20 text-[#53B04B]" : "bg-[#53B04B]/10 text-[#53B04B]"
@@ -154,6 +155,7 @@ function PlanCard({ plan }: { plan: (typeof plans)[0] }) {
       >
         Empezar gratis 30 días
       </Link>
+    </div>
     </div>
   );
 }

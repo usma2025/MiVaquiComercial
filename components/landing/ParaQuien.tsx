@@ -68,19 +68,19 @@ export default function ParaQuien() {
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {tiers.map((tier) => (
-            <div
-              key={tier.label}
-              className={`relative rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300 ${
-                tier.highlight
-                  ? "bg-white text-[#0B4C4A] shadow-2xl shadow-black/30 scale-105 shimmer-overlay animate-float"
-                  : "bg-white/8 border border-white/15 text-white hover:bg-white/12 hover:-translate-y-1"
-              }`}
-            >
+            <div key={tier.label} className={`relative ${tier.highlight ? "pt-4 animate-float" : ""}`}>
               {tier.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#53B04B] text-white text-xs font-bold px-4 py-1 rounded-full shadow animate-glow-pulse-green">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 z-10 bg-[#53B04B] text-white text-xs font-bold px-4 py-1 rounded-full shadow animate-glow-pulse-green whitespace-nowrap">
                   Más popular
                 </div>
               )}
+            <div
+              className={`rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300 ${
+                tier.highlight
+                  ? "bg-white text-[#0B4C4A] shadow-2xl shadow-black/30 scale-105 shimmer-overlay"
+                  : "bg-white/8 border border-white/15 text-white hover:bg-white/12 hover:-translate-y-1"
+              }`}
+            >
 
               <div className={`w-full rounded-full bg-[#53B04B] ${tier.accentH}`} />
 
@@ -114,6 +114,7 @@ export default function ParaQuien() {
                   </li>
                 ))}
               </ul>
+            </div>
             </div>
           ))}
         </StaggerReveal>
