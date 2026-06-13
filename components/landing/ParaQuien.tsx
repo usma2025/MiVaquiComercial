@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { WHATSAPP_CTA_URL } from "@/lib/constants";
+import { Reveal, StaggerReveal } from "./AnimateOnScroll";
 
 const tiers = [
   {
@@ -48,7 +49,7 @@ export default function ParaQuien() {
   return (
     <section className="bg-[#0B4C4A] py-16 lg:py-24">
       <div className="max-w-6xl mx-auto px-5">
-        <div className="text-center mb-12">
+        <Reveal animation="blur-up" className="text-center mb-12">
           <span className="text-[#53B04B] font-semibold text-sm uppercase tracking-widest">
             ¿Para quién es MiVaqui?
           </span>
@@ -59,28 +60,29 @@ export default function ParaQuien() {
             La plataforma crece con su finca. Empiece pequeño y escale sin
             cambiar de herramienta.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StaggerReveal
+          animation="scale"
+          stagger={130}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
           {tiers.map((tier) => (
             <div
               key={tier.label}
               className={`relative rounded-2xl p-7 flex flex-col gap-5 transition-all duration-300 ${
                 tier.highlight
-                  ? "bg-white text-[#0B4C4A] shadow-2xl shadow-black/30 scale-105"
-                  : "bg-white/8 border border-white/15 text-white hover:bg-white/12"
+                  ? "bg-white text-[#0B4C4A] shadow-2xl shadow-black/30 scale-105 shimmer-overlay animate-float"
+                  : "bg-white/8 border border-white/15 text-white hover:bg-white/12 hover:-translate-y-1"
               }`}
             >
               {tier.highlight && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#53B04B] text-white text-xs font-bold px-4 py-1 rounded-full shadow">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#53B04B] text-white text-xs font-bold px-4 py-1 rounded-full shadow animate-glow-pulse-green">
                   Más popular
                 </div>
               )}
 
-              {/* Accent bar — grows with tier */}
-              <div
-                className={`w-full rounded-full bg-[#53B04B] ${tier.accentH}`}
-              />
+              <div className={`w-full rounded-full bg-[#53B04B] ${tier.accentH}`} />
 
               <div className="flex items-center gap-3">
                 <span className={tier.iconSize}>{tier.emoji}</span>
@@ -101,7 +103,7 @@ export default function ParaQuien() {
               <ul className="flex flex-col gap-2.5">
                 {tier.points.map((pt) => (
                   <li key={pt} className="flex items-start gap-2.5 text-sm">
-                    <span className="mt-0.5 w-4 h-4 rounded-full bg-[#53B04B] flex items-center justify-center flex-shrink-0">
+                    <span className="mt-0.5 w-4 h-4 rounded-full bg-[#53B04B] flex items-center justify-center shrink-0">
                       <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
@@ -114,18 +116,18 @@ export default function ParaQuien() {
               </ul>
             </div>
           ))}
-        </div>
+        </StaggerReveal>
 
-        <div className="text-center mt-12">
+        <Reveal animation="fade-up" delay={200} className="text-center mt-12">
           <Link
             href={WHATSAPP_CTA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#53B04B] hover:bg-[#47a042] text-white font-bold py-4 px-8 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-[#53B04B]/30"
+            className="inline-flex items-center gap-2 bg-[#53B04B] hover:bg-[#47a042] text-white font-bold py-4 px-8 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-[#53B04B]/30 animate-glow-pulse"
           >
             Empiece gratis — 30 días sin costo
           </Link>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
 
 const faqs = [
@@ -26,13 +26,63 @@ const faqs = [
   },
 ];
 
+function useReveal(animation: string, delay = 0) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.classList.add("aos-init", `aos-${animation}`);
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => el.classList.add("aos-animate"), delay);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [animation, delay]);
+
+  return ref;
+}
+
 export default function PreguntasFrecuentes() {
   const [open, setOpen] = useState<number | null>(null);
+  const headerRef = useReveal("blur-up");
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = listRef.current;
+    if (!container) return;
+
+    const items = Array.from(container.children) as HTMLElement[];
+    items.forEach((el) => el.classList.add("aos-init", "aos-fade-up"));
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          items.forEach((el, i) => {
+            setTimeout(() => el.classList.add("aos-animate"), i * 100);
+          });
+          io.disconnect();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    io.observe(container);
+    return () => io.disconnect();
+  }, []);
 
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="max-w-3xl mx-auto px-5">
-        <div className="text-center mb-10">
+        <div ref={headerRef} className="text-center mb-10">
           <span className="text-[#53B04B] font-semibold text-sm uppercase tracking-widest">
             Preguntas frecuentes
           </span>
@@ -41,7 +91,7 @@ export default function PreguntasFrecuentes() {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div ref={listRef} className="flex flex-col gap-3">
           {faqs.map((faq, i) => {
             const isOpen = open === i;
             return (
@@ -62,13 +112,12 @@ export default function PreguntasFrecuentes() {
                     {faq.q}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 flex-shrink-0 text-[#53B04B] transition-transform duration-300 ${
+                    className={`w-5 h-5 shrink-0 text-[#53B04B] transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
 
-                {/* Smooth expand via grid-rows trick */}
                 <div
                   className={`grid transition-all duration-300 ease-in-out ${
                     isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"

@@ -1,4 +1,5 @@
 import { Calendar, AlertCircle, BookOpen } from "lucide-react";
+import { Reveal, StaggerReveal } from "./AnimateOnScroll";
 
 const problems = [
   {
@@ -31,7 +32,7 @@ export default function Problema() {
   return (
     <section className="bg-white py-16 lg:py-24">
       <div className="max-w-6xl mx-auto px-5">
-        <div className="text-center mb-12">
+        <Reveal animation="blur-up" className="text-center mb-12">
           <span className="text-[#53B04B] font-semibold text-sm uppercase tracking-widest">
             El problema real
           </span>
@@ -42,15 +43,19 @@ export default function Problema() {
             La mayoría de ganaderos pierden entre el 15% y el 30% de su
             potencial productivo por falta de datos oportunos.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StaggerReveal
+          animation="scale"
+          stagger={130}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
           {problems.map(({ icon: Icon, title, headline, body, color, iconBg }) => (
             <div
               key={title}
-              className={`${color} rounded-2xl p-7 flex flex-col gap-4 border border-black/5 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-default`}
+              className={`${color} rounded-2xl p-7 flex flex-col gap-4 border border-black/5 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 cursor-default group`}
             >
-              <div className={`${iconBg} w-12 h-12 rounded-xl flex items-center justify-center`}>
+              <div className={`${iconBg} w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                 <Icon className="w-6 h-6 text-[#53B04B]" />
               </div>
               <div>
@@ -64,7 +69,7 @@ export default function Problema() {
               <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
             </div>
           ))}
-        </div>
+        </StaggerReveal>
       </div>
     </section>
   );
