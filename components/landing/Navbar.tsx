@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { WHATSAPP_CTA_URL } from "@/lib/constants";
 
@@ -27,16 +28,20 @@ export default function Navbar() {
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100"
-          : "bg-transparent"
+          : "bg-[#0B4C4A]"
       }`}
     >
       <nav className="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
         {/* Brand */}
-        <Link href="#inicio" className="flex items-center gap-2">
-          <span className="text-2xl">🐄</span>
-          <span className={`font-bold text-lg transition-colors ${scrolled ? "text-[#0B4C4A]" : "text-white"}`}>
-            MiVaqui
-          </span>
+        <Link href="#inicio" className="flex items-center">
+          <Image
+            src="/Logo-multiformato-03.png"
+            alt="MiVaqui"
+            width={140}
+            height={40}
+            className={`h-10 w-auto transition-all duration-300 ${scrolled ? "brightness-0 saturate-0" : "brightness-0 invert"}`}
+            priority
+          />
         </Link>
 
         {/* Desktop links */}

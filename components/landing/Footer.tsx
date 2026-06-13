@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
 import { WHATSAPP_SUPPORT_URL, WHATSAPP_CTA_URL } from "@/lib/constants";
-
+import Image from "next/image";
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -12,8 +12,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <span className="text-3xl">🐄</span>
-              <span className="text-white font-bold text-xl">MiVaqui</span>
+              <Image
+                src="/Logo-multiformato-09.png"
+                alt="MiVaqui"
+                width={140}
+                height={40}
+                className="h-10 w-auto"
+                priority
+              />
             </div>
             <p className="text-sm leading-relaxed text-gray-400">
               El asistente ganadero que vive en su WhatsApp. Diseñado para el
