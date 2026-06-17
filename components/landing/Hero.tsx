@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { WHATSAPP_CTA_URL } from "@/lib/constants";
 
 export default function Hero() {
   return (
@@ -36,13 +35,11 @@ export default function Hero() {
           {/* CTA */}
           <div className="animate-fade-in-up animation-delay-400 flex flex-col sm:flex-row gap-4 pt-2">
             <Link
-              href={WHATSAPP_CTA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/postulacion"
               className="animate-glow-pulse flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-white font-bold text-lg py-4 px-8 rounded-2xl transition-all duration-200 hover:-translate-y-1 w-full sm:w-auto"
             >
-              <WhatsAppIcon className="w-6 h-6 flex-shrink-0" />
-              Probar MiVaqui gratis por 30 días
+              <RocketIcon className="w-6 h-6 shrink-0" />
+              Aplicar al piloto gratuito
             </Link>
           </div>
 
@@ -58,7 +55,7 @@ export default function Hero() {
               ))}
             </div>
             <p className="text-sm text-gray-300">
-              <span className="text-white font-semibold">+200 ganaderos</span> ya usan MiVaqui
+              <span className="text-white font-semibold">+100 ganaderos</span> interesados en utilizar MiVaqui
             </p>
           </div>
         </div>
@@ -155,6 +152,16 @@ function PhoneMockup() {
   );
 }
 
+function RocketIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    </svg>
+  );
+}
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">

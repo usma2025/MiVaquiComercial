@@ -119,7 +119,7 @@ export default function ParaQuien() {
           ))}
         </StaggerReveal>
 
-        <Reveal animation="fade-up" delay={200} className="text-center mt-12">
+        {/* <Reveal animation="fade-up" delay={200} className="text-center mt-12">
           <Link
             href={WHATSAPP_CTA_URL}
             target="_blank"
@@ -128,7 +128,7 @@ export default function ParaQuien() {
           >
             Empiece gratis — 30 días sin costo
           </Link>
-        </Reveal>
+        </Reveal> */}
       </div>
     </section>
   );
