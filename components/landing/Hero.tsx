@@ -22,8 +22,8 @@ export default function Hero() {
 
           {/* H1 — gradient accent + staggered words */}
           <h1 className="animate-fade-in-up animation-delay-150 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-            ¿Cuántos terneros y plata perdió este año por no saber las{" "}
-            <span className="text-gradient-green">fechas exactas</span> de su hato?
+            Lleve el control de su hato desde el potrero,{" "}
+            <span className="text-gradient-green">directo por WhatsApp</span>
           </h1>
 
           <p className="animate-fade-in-up animation-delay-300 text-lg text-gray-300 leading-relaxed max-w-lg">
