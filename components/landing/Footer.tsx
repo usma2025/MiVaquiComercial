@@ -1,9 +1,26 @@
+"use client";
+
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
-import { WHATSAPP_SUPPORT_URL, WHATSAPP_CTA_URL } from "@/lib/constants";
 import Image from "next/image";
+import { MessageCircle } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { WHATSAPP_SUPPORT_URL } from "@/lib/constants";
+
+const NAV_LINKS = [
+  { label: "Cómo funciona", anchor: "como-funciona" },
+  { label: "Precios", anchor: "precios" },
+  { label: "Para quién es", anchor: "para-quien" },
+  { label: "Preguntas frecuentes", anchor: "faq" },
+];
+
 export default function Footer() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const year = new Date().getFullYear();
+
+  function href(anchor: string) {
+    return isHome ? `#${anchor}` : `/#${anchor}`;
+  }
 
   return (
     <footer className="bg-[#0B4C4A] text-gray-300">
@@ -11,7 +28,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2">
+            <Link href={isHome ? "#inicio" : "/"}>
               <Image
                 src="/Logo-multiformato-09.png"
                 alt="MiVaqui"
@@ -20,33 +37,26 @@ export default function Footer() {
                 className="h-10 w-auto"
                 priority
               />
-            </div>
+            </Link>
             <p className="text-sm leading-relaxed text-gray-400">
               El asistente ganadero que vive en su WhatsApp. Diseñado para el
               campo colombiano.
             </p>
             <Link
-              href={WHATSAPP_CTA_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/postulacion"
               className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-semibold text-sm py-2.5 px-5 rounded-xl transition-colors w-fit"
             >
-              Probar 30 días gratis
+              Registrar finca piloto
             </Link>
           </div>
 
           {/* Links */}
           <div className="flex flex-col gap-3">
             <p className="text-white font-semibold text-sm mb-1">Plataforma</p>
-            {[
-              { label: "Cómo funciona", href: "#como-funciona" },
-              { label: "Precios", href: "#precios" },
-              { label: "Para quién es", href: "#para-quien" },
-              { label: "Preguntas frecuentes", href: "#faq" },
-            ].map((link) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
-                href={link.href}
+                href={href(link.anchor)}
                 className="text-sm text-gray-400 hover:text-[#53B04B] transition-colors"
               >
                 {link.label}
@@ -66,9 +76,7 @@ export default function Footer() {
               <MessageCircle className="w-4 h-4" />
               Soporte por WhatsApp
             </Link>
-            <p className="text-sm text-gray-400">
-              Lunes a sábado, 7 AM – 7 PM
-            </p>
+            <p className="text-sm text-gray-400">Lunes a sábado, 7 AM – 7 PM</p>
             <p className="text-xs text-gray-500 mt-2">
               Respondemos en menos de 2 horas en horario laboral.
             </p>

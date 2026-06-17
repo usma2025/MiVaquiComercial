@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { WHATSAPP_CTA_URL } from "@/lib/constants";
 import { Reveal, StaggerReveal } from "./AnimateOnScroll";
 
 const tiers = [
@@ -119,16 +118,14 @@ export default function ParaQuien() {
           ))}
         </StaggerReveal>
 
-        <Reveal animation="fade-up" delay={200} className="text-center mt-12">
+        {/* <Reveal animation="fade-up" delay={200} className="text-center mt-12">
           <Link
-            href={WHATSAPP_CTA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/postulacion"
             className="inline-flex items-center gap-2 bg-[#53B04B] hover:bg-[#47a042] text-white font-bold py-4 px-8 rounded-2xl transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-[#53B04B]/30 animate-glow-pulse"
           >
-            Empiece gratis — 30 días sin costo
+            Registrar mi finca piloto
           </Link>
-        </Reveal>
+        </Reveal> */}
       </div>
     </section>
   );

@@ -1,21 +1,27 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { WHATSAPP_CTA_URL } from "@/lib/constants";
 
-const navLinks = [
-  { label: "Cómo funciona", href: "#como-funciona" },
-  { label: "Características", href: "#caracteristicas" },
-  { label: "Precios", href: "#precios" },
-  { label: "FAQ", href: "#faq" },
+const NAV_ITEMS = [
+  { label: "Cómo funciona", anchor: "como-funciona" },
+  { label: "Características", anchor: "caracteristicas" },
+  { label: "Precios", anchor: "precios" },
+  { label: "FAQ", anchor: "faq" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  function href(anchor: string) {
+    return isHome ? `#${anchor}` : `/#${anchor}`;
+  }
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -33,7 +39,7 @@ export default function Navbar() {
     >
       <nav className="max-w-6xl mx-auto px-5 py-3 flex items-center justify-between">
         {/* Brand */}
-        <Link href="#inicio" className="flex items-center">
+        <Link href={isHome ? "#inicio" : "/"} className="flex items-center">
           <Image
             src="/Logo-multiformato-03.png"
             alt="MiVaqui"
@@ -46,15 +52,15 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-7">
-          {navLinks.map((link) => (
+          {NAV_ITEMS.map((item) => (
             <Link
-              key={link.label}
-              href={link.href}
+              key={item.label}
+              href={href(item.anchor)}
               className={`text-sm font-medium transition-colors hover:text-[#53B04B] ${
                 scrolled ? "text-gray-600" : "text-gray-200"
               }`}
             >
-              {link.label}
+              {item.label}
             </Link>
           ))}
         </div>
@@ -62,12 +68,10 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
           <Link
-            href={WHATSAPP_CTA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/postulacion"
             className="bg-orange-500 hover:bg-orange-400 text-white font-semibold text-sm py-2.5 px-5 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-sm"
           >
-            Prueba gratis
+            Piloto gratuito
           </Link>
         </div>
 
@@ -88,24 +92,22 @@ export default function Navbar() {
         } bg-white border-b border-gray-100`}
       >
         <div className="px-5 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
+          {NAV_ITEMS.map((item) => (
             <Link
-              key={link.label}
-              href={link.href}
+              key={item.label}
+              href={href(item.anchor)}
               onClick={() => setMenuOpen(false)}
               className="text-gray-700 font-medium py-1 hover:text-[#53B04B] transition-colors"
             >
-              {link.label}
+              {item.label}
             </Link>
           ))}
           <Link
-            href={WHATSAPP_CTA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/postulacion"
             onClick={() => setMenuOpen(false)}
             className="flex items-center justify-center bg-orange-500 text-white font-bold py-3 rounded-xl mt-1"
           >
-            Prueba gratis — 30 días
+            Piloto gratuito — sin costo
           </Link>
         </div>
       </div>
