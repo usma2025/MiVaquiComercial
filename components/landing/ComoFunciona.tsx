@@ -1,5 +1,6 @@
 import { MessageCircle, Cpu, Bell, Mic, ArrowRight } from "lucide-react";
 import { Reveal, StaggerReveal } from "./AnimateOnScroll";
+import { AgentDemo } from "./AgentDemo";
 
 const steps = [
   {
@@ -92,6 +93,14 @@ export default function ComoFunciona() {
             La primera semana, la mayoría de usuarios dicen que{" "}
             <strong className="text-[#0B4C4A]">"se sintió como hablar con alguien de la finca"</strong>.
           </p>
+        </Reveal>
+
+        {/* ── Demo animada de conversación real con el agente ──────────── */}
+        <Reveal animation="blur-up" delay={200} className="mt-16 lg:mt-20">
+          <p className="text-center text-sm font-semibold text-[#53B04B] uppercase tracking-widest mb-6">
+            Así se ve una conversación real
+          </p>
+          <AgentDemo />
         </Reveal>
       </div>
     </section>
