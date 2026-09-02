@@ -24,10 +24,6 @@ const faqs = [
     q: "¿Cómo empiezo? ¿Necesito importar datos previos?",
     a: "No necesita importar nada para empezar. Abra WhatsApp, escríbanos y empiece a registrar desde hoy. Con el tiempo MiVaqui construye el historial de su hato. Si tiene datos en Excel o cuadernos que quiera migrar, nuestro equipo lo ayuda en el proceso de onboarding.",
   },
-  {
-    q: "¿MiVaqui es lo mismo que Mivaki?",
-    a: "Sí. \"Mivaki\" es simplemente la forma en que muchos ganaderos escriben o pronuncian el nombre al buscarlo. El nombre correcto de la marca es MiVaqui, el asistente ganadero que funciona por WhatsApp.",
-  },
 ];
 
 const faqJsonLd = {

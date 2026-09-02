@@ -1,44 +1,36 @@
 import Link from "next/link";
 import { Reveal, StaggerReveal } from "./AnimateOnScroll";
 
+// MiVaqui no le quita funciones a nadie por el tamaño de su finca: las tres
+// fincas tienen exactamente las mismas herramientas. Lo único que cambia
+// entre planes es cuántos animales caben.
+const SHARED_FEATURES = [
+  "Registro de eventos y alertas completas por WhatsApp",
+  "Panel web con potreros, finanzas y preparación SINIGÁN",
+  "Ficha pública de trazabilidad para compradores",
+  "Calendario reproductivo y curva de peso",
+  "Usuarios con roles (dueño, mayordomo, veterinario)",
+  "Soporte por WhatsApp",
+];
+
 const plans = [
   {
     name: "Pequeña Finca",
-    tagline: "Para fincas familiares de hasta 30 animales",
+    tagline: "Menos de 50 animales",
     highlight: false,
-    features: [
-      "Hasta 30 animales registrados",
-      "Registro de partos y eventos",
-      "Alertas de celo, parto y vacunas",
-      "Historial por animal",
-      "Soporte por WhatsApp",
-    ],
+    features: SHARED_FEATURES,
   },
   {
     name: "Mediana Finca",
-    tagline: "Para fincas de 30 a 150 animales con personal",
+    tagline: "De 51 a 250 animales",
     highlight: true,
-    features: [
-      "Hasta 150 animales registrados",
-      "Todo lo del plan básico",
-      "Panel web para el dueño",
-      "Hasta 3 usuarios (capataz + dueño)",
-      "Potreros con historial y alerta de sobrecarga",
-      "Finanzas: gastos, ingresos y balance",
-    ],
+    features: SHARED_FEATURES,
   },
   {
     name: "Gran Finca",
-    tagline: "Para operaciones de 150+ animales y múltiples potreros",
+    tagline: "Más de 250 animales",
     highlight: false,
-    features: [
-      "Animales ilimitados",
-      "Todo lo del plan medio",
-      "Usuarios ilimitados con roles",
-      "Ficha pública de trazabilidad para compradores",
-      "Múltiples fincas en un panel",
-      "Soporte prioritario dedicado",
-    ],
+    features: SHARED_FEATURES,
   },
 ];
 
@@ -54,7 +46,8 @@ export default function Precios() {
             Encuentre el plan que se adapta a su finca
           </h2>
           <p className="mt-3 text-gray-500 max-w-lg mx-auto">
-            Estamos en fase piloto — los precios se definirán con las primeras fincas.{" "}
+            Las mismas funciones para todos — el plan solo depende del tamaño de su hato.
+            Estamos en fase piloto y los precios se definirán con las primeras fincas.{" "}
             <strong className="text-[#0B4C4A]">Únase ahora sin costo</strong> y forme parte de esa decisión.
           </p>
         </Reveal>
