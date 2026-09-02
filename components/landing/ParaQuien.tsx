@@ -22,7 +22,7 @@ const tiers = [
     headline: "Controle lo que hace el mayordomo en tiempo real",
     points: [
       "El capataz registra por WhatsApp, usted ve todo en el panel web",
-      "Alertas de producción y reproducción por lote",
+      "Finanzas: gastos, ingresos y balance de la finca",
       "Detecte vacas improductivas antes de que el problema crezca",
     ],
     iconSize: "text-4xl",
@@ -33,11 +33,11 @@ const tiers = [
     label: "Finca Grande",
     emoji: "🌳",
     sub: "150+ animales · Múltiples potreros",
-    headline: "Audite potreros y veterinarios en tiempo real",
+    headline: "Audite potreros, sanidad y veterinarios en tiempo real",
     points: [
       "Múltiples usuarios con roles diferenciados",
-      "Consolidación automática de datos de toda la operación",
-      "Reportes para banco, seguro o certificación ganadera",
+      "Rotación de potreros con alerta de sobrecarga",
+      "Ficha pública de trazabilidad para negociar ventas",
     ],
     iconSize: "text-5xl",
     accentH: "h-2",

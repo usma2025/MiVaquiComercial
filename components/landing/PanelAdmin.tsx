@@ -26,6 +26,7 @@ export default function PanelAdmin() {
               "Métricas de producción y reproducción en un vistazo",
               "Alertas del día para no perder ningún evento",
               "Historial completo de cada animal con un clic",
+              "Potreros, finanzas y preparación SINIGÁN, todo consolidado",
               "Reportes exportables para el veterinario o el banco",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 text-gray-700 text-sm">

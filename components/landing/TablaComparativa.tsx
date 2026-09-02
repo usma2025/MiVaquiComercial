@@ -14,12 +14,22 @@ const rows = [
   {
     dimension: "Disponibilidad en el potrero",
     traditional: { text: "Limitada — necesita señal y batería para una app" },
-    mivaqui: { text: "Total — funciona por SMS si no hay datos" },
+    mivaqui: { text: "Total — el mensaje espera y se sincroniza al volver la señal" },
   },
   {
     dimension: "Riesgo de pérdida de datos",
     traditional: { text: "Alto — cuadernos se mojan, apps se borran" },
     mivaqui: { text: "Ninguno — todo en la nube, respaldo automático" },
+  },
+  {
+    dimension: "Rotación de potreros",
+    traditional: { text: "A memoria — fácil perder la cuenta de qué animal está dónde" },
+    mivaqui: { text: "Con historial y alerta automática si un potrero se sobrecarga" },
+  },
+  {
+    dimension: "Preparación para movilizar/vender",
+    traditional: { text: "Papeles sueltos, vacunas sin fecha clara" },
+    mivaqui: { text: "Semáforo automático de DIN y vacunas al día para SINIGÁN" },
   },
   {
     dimension: "Costo de adopción",

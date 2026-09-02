@@ -7,7 +7,7 @@ const steps = [
     icon: MessageCircle,
     title: "Escribe por WhatsApp",
     description:
-      "Mande un mensaje como lo haría con cualquier persona: 'La 204 parió hembra', 'Vacuné el lote 3', 'Peso del toro: 480kg'. Sin formularios ni apps.",
+      "Mande un mensaje como lo haría con cualquier persona: 'La 204 parió hembra', 'Vacuné el lote 3', 'La movimos al potrero 4'. Sin formularios ni apps.",
     badge: { icon: Mic, text: "Mensajes de voz (Próximamente)" },
   },
   {
