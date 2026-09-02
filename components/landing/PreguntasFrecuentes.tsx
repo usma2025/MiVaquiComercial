@@ -24,7 +24,24 @@ const faqs = [
     q: "¿Cómo empiezo? ¿Necesito importar datos previos?",
     a: "No necesita importar nada para empezar. Abra WhatsApp, escríbanos y empiece a registrar desde hoy. Con el tiempo MiVaqui construye el historial de su hato. Si tiene datos en Excel o cuadernos que quiera migrar, nuestro equipo lo ayuda en el proceso de onboarding.",
   },
+  {
+    q: "¿MiVaqui es lo mismo que Mivaki?",
+    a: "Sí. \"Mivaki\" es simplemente la forma en que muchos ganaderos escriben o pronuncian el nombre al buscarlo. El nombre correcto de la marca es MiVaqui, el asistente ganadero que funciona por WhatsApp.",
+  },
 ];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
 
 function useReveal(animation: string, delay = 0) {
   const ref = useRef<HTMLDivElement>(null);
@@ -81,6 +98,10 @@ export default function PreguntasFrecuentes() {
 
   return (
     <section className="bg-white py-16 lg:py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="max-w-3xl mx-auto px-5">
         <div ref={headerRef} className="text-center mb-10">
           <span className="text-[#53B04B] font-semibold text-sm uppercase tracking-widest">
